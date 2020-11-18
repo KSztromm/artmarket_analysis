@@ -1,0 +1,6 @@
+.env 
+venv/ 
+data/src/ 
+.ipynb_checkpoints 
+*.log 
+src/dependencies/ 
