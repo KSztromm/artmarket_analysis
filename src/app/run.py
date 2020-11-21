@@ -1,5 +1,6 @@
 import os, time
 import pandas as pd
+from dotenv import load_dotenv
 from collections import Counter
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -19,10 +20,11 @@ def get_metadata(driver, df, key, xpath_general, xpath_detailed, att='innerText'
 
 ############################################
 
+load_dotenv()
 start_time = time.time()
 
-local_path = 'C:/Users/tmrozik/Documents/artdata'
-webdriver_path = os.path.join(local_path, 'src/dependencies/chromedriver.exe')
+local_path = os.environ.get("LOCALPATH")
+webdriver_path = os.environ.get("CHROMEPATH")
 
 options = Options()
 options.headless = True
