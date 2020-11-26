@@ -4,3 +4,4 @@ data/src/
 .ipynb_checkpoints 
 *.log 
 src/dependencies/ 
+src/app/__pycache__ 
