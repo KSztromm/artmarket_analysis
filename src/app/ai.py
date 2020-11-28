@@ -15,6 +15,8 @@ start_time = time.time()
 
 local_path = os.environ.get("LOCALPATH")
 webdriver_path = os.environ.get("CHROMEPATH")
+ai_login = os.environ.get("AILOGIN")
+ai_pwd = os.environ.get("AIPWD")
 
 options = Options()
 options.headless = True
@@ -22,9 +24,9 @@ options.headless = True
 driver = webdriver.Chrome(webdriver_path, chrome_options=options)
 driver.get('https://artinfo.pl/logowanie')
 login=driver.find_element_by_id('user_email')
-login.send_keys('tomasz.mrozik0@gmail.com')
+login.send_keys(ai_login)
 pwd=driver.find_element_by_id('user_password')
-pwd.send_keys('KlaudiaCud22!')
+pwd.send_keys(ai_pwd)
 login_button=driver.find_element_by_xpath("//input[@value='Zaloguj się']")
 login_button.click()
 driver.implicitly_wait(1)
