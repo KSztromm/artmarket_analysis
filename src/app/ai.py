@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from collections import Counter
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import NoSuchElementException 
 from artscrap import ArtScrap
 
 ############################################
@@ -29,7 +32,7 @@ pwd=driver.find_element_by_id('user_password')
 pwd.send_keys(ai_pwd)
 login_button=driver.find_element_by_xpath("//input[@value='Zaloguj się']")
 login_button.click()
-driver.implicitly_wait(10)
+driver.implicitly_wait(2)
 try:
     last_page = 0
     page = 0
@@ -59,7 +62,10 @@ try:
                 painters = driver.find_elements_by_xpath("//div[starts-with(@id, 'artwork_')]")
                 print(len(painters))
                 for j in range(len(painters)):
-                    print(painters[j].find_element_by_xpath(".//span[@class='artist-name']").get_attribute('innerText'))
+
+                    #print(painters[j].find_element_by_xpath(".//span[@class='artist-name']").get_attribute('innerText'))
+                    print(painters[j].find_elements_by_xpath(".//div[@class='col-10']//*")[0].get_attribute('innerText'))
+
 
                 driver.back()
                 driver.back()
